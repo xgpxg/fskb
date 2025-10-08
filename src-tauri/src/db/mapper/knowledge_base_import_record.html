@@ -1,0 +1,13 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "https://raw.githubusercontent.com/rbatis/rbatis/master/rbatis-codegen/mybatis-3-mapper.dtd">
+<mapper>
+    <select id="list_page">
+        select * from knowledge_base_import_record
+        <where>
+            <if test="param.kbId != null">
+                and knowledge_base_id = #{param.kbId}
+            </if>
+        </where>
+        ` order by id desc `
+    </select>
+</mapper>

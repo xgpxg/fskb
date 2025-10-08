@@ -1,0 +1,8 @@
+//单独使用hljs时 包裹在el-card下 不然回和vditor的样式冲突
+.el-card {
+  .hljs {
+    line-height: 20px;
+    font-size: 14px;
+    background: white;
+  }
+}

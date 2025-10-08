@@ -1,0 +1,9 @@
+[package]
+name = "ocr"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+common = { path = "../../lib/common" }
+paddleocr = { git = "ssh://git@github.com/xgpxg/paddleocr.git", branch = "master" }
+anyhow = { workspace = true }

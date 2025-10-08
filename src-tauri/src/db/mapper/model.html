@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "https://raw.githubusercontent.com/rbatis/rbatis/master/rbatis-codegen/mybatis-3-mapper.dtd">
+<mapper>
+    <select id="list_page">
+        select * from model
+        <where>
+            ` is_delete = 0 `
+            <if test="param.filter != null">
+                and model.name like concat('%',#{param.filter},'%')
+            </if>
+        </where>
+        ` order by id desc `
+    </select>
+
+    <!--检查名称是否重复-->
+    <select id="check_name_exists">
+        select count(1) as count
+        from model
+        where name = #{name} and is_delete = 0
+        <if test="exclude_id != null">
+           `  and id != #{exclude_id} `
+        </if>
+    </select>
+</mapper>

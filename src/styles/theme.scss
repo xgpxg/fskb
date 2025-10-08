@@ -1,0 +1,149 @@
+// 默认
+html.default {
+  --el-color-primary: #10B981;
+  --el-color-primary-light-3: #34D399;
+  --el-color-primary-light-5: #6EE7B7;
+  --el-color-primary-light-7: #A7F3D0;
+  --el-color-primary-light-8: #D1FAE5;
+  --el-color-primary-light-9: #DCFAEA;
+  --el-color-primary-light-10: #E8FCF2;
+  --el-color-primary-light-11: #F0FDF6;
+  --el-color-primary-light-12: #F8FEFB;
+  --el-color-primary-dark: #059669;
+  --el-color-primary-dark-3: #047857;
+}
+
+html.dark {
+  //--el-bg-color: #393939;
+  //--el-bg-color-page: #0a140f;
+  //--el-bg-color-overlay: #162a1d;
+  //--el-text-color-primary: #e0f2e9;
+  //--el-text-color-regular: #c2e4d5;
+  //--el-text-color-secondary: #94c9b3;
+  //--el-text-color-placeholder: #6aa88d;
+  //--el-border-color: #2d5a41;
+  //--el-border-color-light: #366a4d;
+  //--el-border-color-extra-light: #3d7a59;
+  //--el-fill-color: #393939;
+  //--el-fill-color-light: #1d3a2a;
+  //--el-fill-color-lighter: #182f22;
+  //--el-fill-color-extra-light: #393939;
+  //--el-fill-color-blank: #757575;
+  //
+  --el-color-primary: #252525;
+  --el-color-primary-light-3: #393939;
+  --el-color-primary-light-5: #505050;
+  --el-color-primary-light-7: #757575;
+  --el-color-primary-light-8: #8e8e8e;
+  --el-color-primary-light-9: #8a8a8a;
+  --el-color-primary-dark: #202020;
+  --el-color-primary-dark-3: #1e1e1e;
+
+  filter: invert(0.93) hue-rotate(180deg);
+
+  picture,
+  video,
+  img,
+  .el-header,
+  .theme {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  .el-header {
+    .el-avatar {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  }
+
+  .svg-icon {
+    filter: invert(1) hue-rotate(180deg);
+
+    &.control {
+      filter: invert(0) hue-rotate(180deg);
+    }
+  }
+
+  .el-button {
+    &.el-button--primary {
+      filter: invert(1) hue-rotate(180deg);
+    }
+
+    .svg-icon {
+      filter: invert(0) hue-rotate(180deg);
+    }
+
+
+    &.is-text {
+      filter: invert(0) hue-rotate(180deg);
+    }
+
+    &.is-link {
+      filter: invert(0) hue-rotate(180deg);
+    }
+
+    #share-card-result {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  }
+
+  .github-markdown-body {
+    color: #000000 !important;
+    font-weight: 500;
+  }
+
+  .actions {
+    .svg-icon {
+      filter: invert(0) hue-rotate(180deg);
+    }
+  }
+}
+
+// 蓝色
+html.blue {
+  --el-color-primary: #409eff;
+  --el-color-primary-light-3: #66b1ff;
+  --el-color-primary-light-5: #8cc5ff;
+  --el-color-primary-light-7: #b3d8ff;
+  --el-color-primary-light-8: #c0d5ff;
+  --el-color-primary-light-9: #d9ecff;
+  --el-color-primary-dark: #3b93ed;
+  --el-color-primary-dark-3: #3482d3;
+}
+
+// 红色
+html.red {
+  --el-color-primary: #f56c6c;
+  --el-color-primary-light-3: #f78989;
+  --el-color-primary-light-5: #fab6b6;
+  --el-color-primary-light-7: #fcd3d3;
+  --el-color-primary-light-8: #fcdcdc;
+  --el-color-primary-light-9: #fdeeee;
+  --el-color-primary-dark: #e16161;
+  --el-color-primary-dark-3: #cf5555;
+}
+
+// 橙色
+html.orange {
+  --el-color-primary: #e6a23c;
+  --el-color-primary-light-3: #ebb563;
+  --el-color-primary-light-5: #f3c17a;
+  --el-color-primary-light-7: #f7d19e;
+  --el-color-primary-light-8: #f7e3b5;
+  --el-color-primary-light-9: #fbe6c3;
+  --el-color-primary-dark: #c97a1f;
+  --el-color-primary-dark-3: #9f6119;
+}
+
+// 紫色
+html.purple {
+  --el-color-primary: #a66ec6;
+  --el-color-primary-light-3: #c08ce5;
+  --el-color-primary-light-5: #d3aefa;
+  --el-color-primary-light-7: #e5cfff;
+  --el-color-primary-light-8: #e9d5ff;
+  --el-color-primary-light-9: #f0eaff;
+  --el-color-primary-light-11: #faf9ff;
+  --el-color-primary-light-13: #fcfcff;
+  --el-color-primary-dark: #8956a6;
+  --el-color-primary-dark-3: #61337e;
+}

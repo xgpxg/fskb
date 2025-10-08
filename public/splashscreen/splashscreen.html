@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fly Tree</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app" v-cloak>
+    <div class="init-container" :class="{ 'fade-in': true }">
+        <!-- 背景光效 -->
+        <div class="background-glow"></div>
+
+        <!-- 流光线条 -->
+        <div class="light-line"></div>
+
+        <!-- 主体内容 -->
+        <div class="content-wrapper" data-tauri-drag-region>
+            <!-- Logo -->
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="/images/xfs.png" class="icon"/>
+                </div>
+            </div>
+
+            <!-- 文案区域 -->
+            <div class="text-section">
+                <h1 class="title">小飞树知识库</h1>
+                <p class="subtitle">知识管理 / 问答 / 学习 / 笔记</p>
+            </div>
+
+            <!--            &lt;!&ndash; 加载动画 &ndash;&gt;
+                        <div class="loading-indicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>-->
+
+            <!-- 圆形进度条和信息区域 -->
+            <div class="progress-wrapper">
+                <!-- 圆形进度条 -->
+                <div class="circular-progress">
+                    <svg class="progress-ring" width="80" height="80">
+                        <circle class="progress-ring-bg" cx="40" cy="40" r="35"></circle>
+                        <circle class="progress-ring-fill" cx="40" cy="40" r="35"
+                                :stroke-dasharray="`${data.progress * 2.2} 219.91`"></circle>
+                    </svg>
+                    <div class="progress-text">{{ data.progress.toFixed(0) }}%</div>
+                </div>
+
+                <!-- 进度信息区域 -->
+                <div class="progress-info">
+                    <h2 class="progress-title">{{ progressTitle }}</h2>
+                    <p class="progress-description">{{ progressDescription }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./vue.global.prod.js"></script>
+<script lang="ts">
+    const {createApp, ref, onMounted} = Vue
+
+    // 禁用右键菜单
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault()
+        return false;
+    })
+
+    createApp({
+        setup() {
+            const data = ref({progress: 0})
+            const progressTitle = ref('')
+            const progressDescription = ref('')
+
+            onMounted(async () => {
+                await window.__TAURI__.event.listen('setup', (source) => {
+                    let {payload} = source
+                    const {event, data: payloadData} = payload
+
+                    switch (event) {
+                        case 'Update':
+                            progressTitle.value = '正在下载更新...'
+                            progressDescription.value = `下载中，马上就好（${(payloadData.downloaded / 1024 / 1024).toFixed(2)}M / ${(payloadData.total / 1024 / 1024).toFixed(2)}M）`
+                            data.value = payloadData
+                            break
+                        case 'LoadResource': {
+                            progressTitle.value = '正在加载资源...'
+                            progressDescription.value = `加载中，请稍后（${(payloadData.downloaded / 1024 / 1024).toFixed(2)}M / ${(payloadData.total / 1024 / 1024).toFixed(2)}M）`
+                            if (payloadData.progress === 100) {
+                                progressTitle.value = '正在安装必要的系统组件...'
+                                progressDescription.value = '在安装啦，马上就好！'
+                            }
+                            data.value = payloadData
+                            break
+                        }
+                        case 'ApplyUpdate': {
+                            progressTitle.value = '正在应用更新...'
+                            progressDescription.value = `正在处理数据，请稍后`
+                            if (payloadData.progress === 100) {
+                                progressTitle.value = '正在启动'
+                            }
+                            data.value = payloadData
+                            break
+                        }
+                        default:
+                            data.value = payloadData
+                    }
+                })
+            })
+
+            return {
+                data,
+                progressTitle,
+                progressDescription
+            }
+        },
+    }).mount("#app")
+</script>
+
+<style lang="scss">
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    height: 100%;
+  }
+
+  .init-container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #0d4c33, #1a7a50, #2bb370);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+
+    &.fade-in {
+      opacity: 1;
+    }
+
+    .background-glow {
+      position: absolute;
+      width: 300%;
+      height: 300%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      animation: rotateGlow 20s linear infinite;
+      filter: blur(80px);
+    }
+
+    .light-line {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      animation: lightLine 3s linear infinite;
+    }
+
+    .content-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .logo-container {
+      margin-bottom: 40px;
+      position: relative;
+
+      .logo-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2bb370, #1a7a50);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: breathe 4s infinite ease-in-out, glow 2s infinite alternate;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transform: rotate(45deg);
+          animation: shine 3s infinite;
+        }
+
+        .icon {
+          width: 80px;
+          height: 80px;
+          color: white;
+          z-index: 2;
+        }
+      }
+    }
+
+    .text-section {
+      margin-bottom: 40px;
+
+      .title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        margin-bottom: 10px;
+        animation: fadeIn 1s ease-in-out forwards;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.85);
+        margin-top: 10px;
+        animation: fadeIn 1s ease-in-out forwards;
+        animation-delay: 0.3s;
+      }
+    }
+
+    .loading-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+
+      span {
+        width: 12px;
+        height: 12px;
+        background-color: #fff;
+        border-radius: 50%;
+        opacity: 0.4;
+        animation: loading-dot 1.4s infinite ease-in-out both;
+
+        &:nth-child(2) {
+          animation-delay: -0.3s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: -0.6s;
+        }
+      }
+    }
+
+    .progress-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 400px;
+      justify-content: center;
+    }
+
+    .circular-progress {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .progress-ring {
+        transform: rotate(-90deg);
+      }
+
+      .progress-ring-bg {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.2);
+        stroke-width: 6;
+      }
+
+      .progress-ring-fill {
+        fill: none;
+        stroke: #8bc34a;
+        stroke-width: 6;
+        stroke-linecap: round;
+        transition: stroke-dasharray 0.4s ease;
+      }
+
+      .progress-text {
+        position: absolute;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+      }
+    }
+
+    .progress-info {
+      flex: 1;
+      text-align: left;
+      max-width: 250px;
+
+      .progress-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+
+      .progress-description {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.4;
+      }
+    }
+  }
+
+  @keyframes rotateGlow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes lightLine {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 20px rgba(43, 179, 112, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 30px rgba(43, 179, 112, 0.8), 0 0 40px rgba(26, 122, 80, 0.6);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes loading-dot {
+    0%, 80%, 100% {
+      transform: scale(0);
+      opacity: 0.4;
+    }
+    40% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+      transform: translate(150%, 150%) rotate(45deg);
+    }
+  }
+</style>
+</html>

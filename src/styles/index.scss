@@ -1,0 +1,71 @@
+@use './common.scss';
+@use './element-ui-cover.scss';
+@use './highlight.scss';
+@use './vditor.scss';
+@use './right-menu.scss';
+@use './md-preview.scss';
+@use 'animate.css';
+@use 'theme.scss';
+@use './app.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+/*html, img {
+  filter: invert(1) hue-rotate(.5turn);
+}*/
+a {
+  color: #444444;
+  text-decoration: none;
+}
+
+body {
+  background: radial-gradient(circle at 14% 85%, #e7ecf7 0, rgba(231, 236, 247, 0) 37%), radial-gradient(circle at 3.4% 3.7%, rgba(245, 237, 241, .5) 0, rgba(245, 237, 241, 0) 28%), radial-gradient(circle at 100% 18%, #e8ebea 0, hsla(160, 7%, 92%, 0) 30%), linear-gradient(180deg, #f5f4f6, #e6ebf7);
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+code {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-size: 12px;
+}
+
+.app-container {
+  padding: 0 20px;
+  height: 100%;
+}
+
+
+pre {
+  border-radius: 5px;
+}
+
+input, button {
+  box-shadow: none;
+}
+
+::selection {
+  background-color: var(--el-color-primary);
+  color: white;
+}
+
+::-webkit-selection {
+  background-color: var(--el-color-primary);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--el-color-primary);
+  color: white;
+}
+
+
+$gray-color: #909399

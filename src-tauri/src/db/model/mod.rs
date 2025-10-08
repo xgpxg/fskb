@@ -1,0 +1,9 @@
+pub(crate) mod chat_message;
+pub(crate) mod knowledge_base;
+pub(crate) mod knowledge_base_import_record;
+pub(crate) mod mcp_server;
+pub(crate) mod mcp_server_define;
+pub(crate) mod model;
+pub(crate) mod note;
+pub(crate) mod system_config;
+pub(crate) mod user_profile;

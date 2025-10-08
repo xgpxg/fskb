@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "https://raw.githubusercontent.com/rbatis/rbatis/master/rbatis-codegen/mybatis-3-mapper.dtd">
+<mapper>
+    <select id="last_message_id">
+        select message_id
+        from chat_message
+        where knowledge_base_id = #{knowledge_base_id}
+        order by message_id desc
+        limit 1
+    </select>
+
+    <select id="list_history_messages">
+        select *
+        from chat_message
+        where knowledge_base_id = #{knowledge_base_id}
+        and is_delete = 0
+        <if test="last_message_id!=null">
+            ` and message_id < #{last_message_id} `
+        </if>
+        ` order by message_id desc`
+        ` limit 5 `
+    </select>
+    <select id="list_history_messages_limit">
+        select *
+        from chat_message
+        where knowledge_base_id = #{knowledge_base_id}
+        and is_delete = 0
+        order by message_id desc
+        <if test="limit!=0">
+            ` limit #{limit} `
+        </if>
+    </select>
+    <select id="get_one_message">
+        select *
+        from chat_message
+        where knowledge_base_id = #{knowledge_base_id}
+          and message_id = #{message_id}
+          and is_delete = 0
+        order by message_id desc
+        limit 1
+    </select>
+</mapper>

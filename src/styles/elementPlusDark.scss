@@ -1,0 +1,75 @@
+// 夜间模式
+$--colors: (
+        'white': #1C1C1E,
+        'black': #FFF,
+        'primary': (
+                'base': #0A84FF,
+        ),
+        'success': (
+                'base': #32D74B,
+        ),
+        'warning': (
+                'base': #FFD60A,
+        ),
+        'danger': (
+                'base': #FF9F0A,
+        ),
+        'error': (
+                'base': #FF453A,
+        ),
+        'info': (
+                'base': #909399,
+        ),
+);
+$--text-color:(
+        ('primary': #FFF,
+                'regular': #EBEBF0,
+                'secondary': #BCBCC0,
+                'placeholder': #AEAEB2,
+                'disabled': #8E8E93,
+        )
+);
+$--border-color:(
+        (
+                '': #404042,
+                'light': #2C2C2E,
+                'lighter': #3A3A3C,
+                'extra-light': #545456,
+                'dark': #7C7C80,
+                'darker': #AEAEB2,
+        )
+);
+$--fill-color:(
+        (
+                '': #242426,
+                'light': #242426,
+                'lighter': #242426,
+                'extra-light': #242426,
+                'dark': #363638,
+                'darker': #363638,
+                'blank': #363638,
+        )
+);
+$--bg-color:(
+        (
+                '': #1C1C1E,
+                'page': #1C1C1E,
+                'overlay': #1C1C1E,
+        )
+);
+$--mask-color:(
+        (
+                '': rgba(0, 0, 0, 0.8),
+                'extra-light': rgba(255, 255, 255, 0.3),
+        )
+);
+@forward "element-plus/theme-chalk/src/common/var.scss" with
+  (
+    $colors: $--colors,
+    $text-color : $--text-color,
+    $border-color:$--border-color,
+    $fill-color:$--fill-color,
+    $bg-color:$--bg-color,
+    $mask-color:$--mask-color,
+  );
+@use "element-plus/theme-chalk/src/index.scss" as *;

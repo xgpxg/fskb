@@ -1,0 +1,41 @@
+.v-md-editor-preview {
+  .github-markdown-body {
+    font-size: 15px;
+  }
+
+  .v-md-pre-wrapper {
+    font-size: 15px;
+  }
+
+  pre {
+    z-index: unset !important;
+  }
+
+  table {
+    border: #eeeeee 1px solid;
+    width: 100%;
+    display: table;
+
+    tr {
+      border: unset;
+
+      th {
+        font-weight: normal;
+        background: #f3f3f3;
+        min-width: 50px;
+        border: unset;
+      }
+
+      td {
+        font-size: 15px;
+        border: unset;
+      }
+    }
+  }
+
+  a {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

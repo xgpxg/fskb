@@ -1,0 +1,13 @@
+.prompt-input {
+  .el-textarea__inner {
+    font-size: 16px;
+    border-radius: 5px !important;
+    padding: 20px;
+    border: unset;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px !important;
+
+    &:focus {
+      box-shadow: unset;
+    }
+  }
+}

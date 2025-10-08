@@ -1,0 +1,380 @@
+.pd2 {
+  padding: 2px;
+}
+
+.pd5 {
+  padding: 5px;
+}
+
+.pd10 {
+  padding: 10px;
+}
+
+.pd15 {
+  padding: 15px;
+}
+
+.pd20 {
+  padding: 20px;
+}
+
+.pd30 {
+  padding: 30px;
+}
+
+.pdl5 {
+  padding-left: 5px;
+}
+
+.pdl10 {
+  padding-left: 10px;
+}
+
+.pdl15 {
+  padding-left: 15px;
+}
+
+.pdl20 {
+  padding-left: 20px;
+}
+
+.pdr5 {
+  padding-right: 5px;
+}
+
+.pdr10 {
+  padding-right: 10px;
+}
+
+.pdr15 {
+  padding-right: 15px;
+}
+
+.pdr20 {
+  padding-right: 20px;
+}
+
+.pdt5 {
+  padding-top: 5px;
+}
+
+.pdt10 {
+  padding-top: 10px;
+}
+
+.pdt15 {
+  padding-top: 15px;
+}
+
+.pdt20 {
+  padding-top: 20px;
+}
+
+.pdb5 {
+  padding-bottom: 5px;
+}
+
+.pdb10 {
+  padding-bottom: 10px;
+}
+
+.pdb15 {
+  padding-bottom: 15px;
+}
+
+.pdb20 {
+  padding-bottom: 20px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb50 {
+  margin-bottom: 50px;
+}
+
+.ml2 {
+  margin-left: 2px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml50 {
+  margin-left: 50px;
+}
+
+.mr2 {
+  margin-right: 2px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr15 {
+  margin-right: 15px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.mr50 {
+  margin-right: 50px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+
+.mt50 {
+  margin-top: 50px;
+}
+
+.br5 {
+  border-radius: 5px;
+}
+
+.br10 {
+  border-radius: 10px;
+}
+
+.br15 {
+  border-radius: 15px;
+}
+
+.br20 {
+  border-radius: 20px;
+}
+
+.br50 {
+  border-radius: 20px;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tr {
+  text-align: right;
+}
+
+.tc {
+  text-align: center;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-v {
+  display: flex;
+  align-items: center;
+}
+
+.flex-column-v {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-right {
+  margin-left: auto;
+}
+
+.color-info {
+  color: #303133;
+}
+
+.color-secondary {
+  color: #909399;
+}
+
+.color-white {
+  color: #ffffff;
+}
+
+.box-shadow {
+  box-shadow: var(--el-box-shadow-lighter);
+}
+
+
+.small-font {
+  font-size: 13px;
+}
+
+.mini-font {
+  font-size: 12px;
+}
+
+.large-font {
+  font-size: 18px;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.width-30 {
+  width: 30%;
+}
+
+.width-70 {
+  width: 70%;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.title-block {
+  border-left: var(--el-color-primary-light-3) 5px solid;
+  padding: 0 5px;
+  margin: 10px 0;
+  display: block;
+  color: #6a737d;
+  line-height: 16px;
+  font-size: 14px;
+}
+
+.no-select {
+  user-select: none;
+}
+
+.box-shadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+}
+
+.border-dashed {
+  border: 1px #d9d9d9 dashed;
+  padding: 5px 10px;
+}
+
+.border-solid {
+  border: 1px #e7e7e7 solid;
+  padding: 5px 10px;
+}
+
+.bg-card {
+  background: #f5f5f5;
+  padding: 10px;
+}
+
+.bg-card-2 {
+  background: #f5f5f5;
+  padding: 5px 10px;
+}
+
+.card-white {
+  background: #ffffff;
+  padding: 20px;
+  border: #f3f3f3 1px solid;
+}
+
+.card-white-2 {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: #f3f3f3 1px solid;
+}
+
+.card-white-3 {
+  background: #ffffff;
+  padding: 5px 10px;
+  border: #f3f3f3 1px solid;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.loading {
+  -webkit-animation: load 2s infinite linear;
+}
+
+@-webkit-keyframes load {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
