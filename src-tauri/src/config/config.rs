@@ -1,5 +1,3 @@
-#[cfg(not(debug_assertions))]
-use crate::config::license;
 use anyhow::anyhow;
 use serde::Deserialize;
 use std::cell::OnceCell;
@@ -12,9 +10,6 @@ pub(crate) struct Config {
     /// 服务器配置
     #[serde(default = "ServerConfig::default")]
     pub server: ServerConfig,
-    #[cfg(not(debug_assertions))]
-    /// license文件路径
-    pub license: Option<String>,
     /// 数据库配置，如果未在yaml中配置，则默认从环境变量中获取
     #[serde(default = "DatabaseConfig::default")]
     #[allow(unused)]
@@ -32,8 +27,6 @@ impl Default for Config {
     fn default() -> Self {
         Config {
             server: Default::default(),
-            #[cfg(not(debug_assertions))]
-            license: Default::default(),
             database: Default::default(),
             sms: None,
             mail: None,
@@ -131,12 +124,6 @@ pub(crate) fn init(config_file: &str) -> anyhow::Result<()> {
     match result {
         Ok(config) => {
             CONFIG.get_or_init(|| {
-                #[cfg(not(debug_assertions))]
-                // 检查license
-                if let Err(e) = license::check_license(config.license.clone()) {
-                    log::error!("{}", e.to_string());
-                    std::process::exit(1);
-                }
 
                 #[cfg(feature = "redis-cache")]
                 if config.redis.is_none() {

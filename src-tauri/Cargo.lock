@@ -1398,15 +1398,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "bs58"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bf88ba1141d185c399bee5288d850d63b8369520c1eafc32a0430b5b6c287bf4"
-dependencies = [
- "tinyvec",
-]
-
-[[package]]
 name = "built"
 version = "0.7.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3489,7 +3480,6 @@ dependencies = [
  "idgenerator",
  "image-to-text",
  "input",
- "license-gen",
  "log",
  "mcp",
  "memory",
@@ -5635,21 +5625,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "172a788537a2221661b480fee8dc5f96c580eb34fa88764d3205dc356c7e4221"
 dependencies = [
  "zlib-rs",
-]
-
-[[package]]
-name = "license-gen"
-version = "0.1.0"
-source = "git+ssh://git@gitee.com/xgpxg/license-gen.git?branch=master#12f06c45a30919d5f9c980cd9d6157733d97cff7"
-dependencies = [
- "bs58",
- "chrono",
- "clap",
- "hex",
- "ring",
- "serde",
- "serde_yaml",
- "uuid",
 ]
 
 [[package]]
